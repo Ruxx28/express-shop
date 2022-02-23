@@ -1,0 +1,17 @@
+new cart
+=checkout submit
+=checkuser(address)
+=payment x clean cart  { status: 'expired' }
+	 x update cart {state: 'completed' }
+		x order { state: 'success'}
+		= new order { date, shipping, payment, products}
+        	= update inventories_id = cart_id { reservations: { _id: cart._id } }
+		x order { state: 'failure'}
+		= get product in cart add product inventories
+open old cart
+-check product inventories
+x remove product x inventories
+  reload
+
+new order
+shipping
